@@ -2,9 +2,6 @@
 using System.Data.Entity;
 using System.Linq;
 using EF_CodeFirst.Infra;
-using System.Data.SqlClient;
-using EF_CodeFirst.Model;
-using System.Collections.Generic;
 
 namespace EF_CodeFirst
 {
@@ -15,7 +12,14 @@ namespace EF_CodeFirst
             // Initializing the database and populating seed data using DropCreateDatabaseIfModelChanges initializer
             (new DropCreateDBOnModelChanged()).InitializeDatabase(new SchoolContext());
 
+            // Creating a SchoolContext to be used to access data
 
+            // Getting the courses list from the database
+
+            // Writing the courses list to the console
+
+            // For each course, writing the students list to the console
+
+            // Waiting for user input before closing the console window
         }
     }
-}
