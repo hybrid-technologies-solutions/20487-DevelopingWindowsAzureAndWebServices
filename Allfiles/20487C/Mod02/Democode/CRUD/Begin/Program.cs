@@ -10,12 +10,13 @@ namespace EF_CodeFirst
 {
     class Program
     {
+        static string ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;Database=Module_02_Demos;Integrated Security=True";
         static void Main(string[] args)
         {
             // Initializing the database and populating seed data using DropCreateDatabaseIfModelChanges initializer
-            (new DropCreateDBOnModelChanged()).InitializeDatabase(new SchoolContext());
+            (new DropCreateDBOnModelChanged()).InitializeDatabase(new SchoolContext(ConnectionString));
 
-            // Creating a SchoolContext to be used to access data4
+            // Creating a SchoolContext to be used to access data
 
             // Getting the WCF Course from the courses repository
 
