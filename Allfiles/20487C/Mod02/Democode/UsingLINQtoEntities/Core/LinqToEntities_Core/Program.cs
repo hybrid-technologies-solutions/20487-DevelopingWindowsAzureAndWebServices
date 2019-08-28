@@ -18,28 +18,34 @@ namespace EF_Seed_Core
         static void Main(string[] args)
         {
             SeedData();
-
             // Creating a SchoolContext to be used to access data
             using (var context = new SchoolContext(GetOptions()))
             {
-
-                // Getting the courses list from the database
-                var courses = (from c in context.Courses
-                               select c);
-
-                // Writing the courses list to the console
-                foreach (var course in courses)
+                try
                 {
-                    // For each course, writing the students list to the console
-                    Console.WriteLine("Course: {0}", course.Name);
-                    foreach (var student in course.Students)
+                    // Getting the courses list from the database
+                    var courses = (from c in context.Courses
+                                   select c);
+
+                    // Writing the courses list to the console
+                    foreach (var course in courses)
                     {
-                        Console.WriteLine("\tStudent name: {0}", student.Name);
+                        // For each course, writing the students list to the console
+                        Console.WriteLine("Course: {0}", course.Name);
+                        foreach (var student in course.Students)
+                        {
+                            Console.WriteLine("\tStudent name: {0}", student.Student.Name);
+                        }
                     }
+
+                    // Waiting for user input before closing the console window
+                    Console.ReadLine();
+                }
+                finally
+                {
+                    context.Database.EnsureDeleted();
                 }
 
-                // Waiting for user input before closing the console window
-                Console.ReadLine();
             }
         }
 
@@ -48,6 +54,7 @@ namespace EF_Seed_Core
             using (var context = new SchoolContext(GetOptions()))
             {
                 //Ensure database is created. Not compatible with migration
+                context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
 
                 List<string> teacherNames = new List<string>() { "Kari Hensien", "Terry Adams", "Dan Park", "Peter Houston", "Lukas Keller", "Mathew Charles", "John Smith", "Andrew Davis", "Frank Miller", "Patrick Hines" };
@@ -58,7 +65,7 @@ namespace EF_Seed_Core
                 for (int i = 0; i < 10; i++)
                 {
                     var teacher = new Teacher() { Name = teacherNames[i], Salary = 100000 };
-                    var course = new Course { Name = courseNames[i], CourseTeacher = teacher, Students = new List<Student>() };
+                    var course = new Course { Name = courseNames[i], CourseTeacher = teacher, Students = new List<CourseStudent>() };
 
 
                     Random rand = new Random(i);
@@ -67,7 +74,7 @@ namespace EF_Seed_Core
                     for (int j = 0; j < 10; j++)
                     {
                         var student = new Student { Name = "Student_" + j, Grade = rand.Next(40, 90) };
-                        course.Students.Add(student);
+                        course.Students.Add(new CourseStudent { Course = course, Student = student });
                     }
                     context.Courses.Add(course);
                     context.Teachers.Add(teacher);

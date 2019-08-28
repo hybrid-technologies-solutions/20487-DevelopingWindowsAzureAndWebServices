@@ -7,18 +7,19 @@ namespace EF_CodeFirst
 {
     class Program
     {
+        static string ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;Database=Module_02_Demos;Integrated Security=True";
         static void Main(string[] args)
         {
             // Initializing the database and populating seed data using DropCreateDatabaseIfModelChanges initializer
-            (new DropCreateDBOnModelChanged()).InitializeDatabase(new SchoolContext());
+            (new DropCreateDBOnModelChanged()).InitializeDatabase(new SchoolContext(ConnectionString));
 
             // Creating a SchoolContext to be used to access data
-            using (var context = new SchoolContext())
+            using (var context = new SchoolContext(ConnectionString))
             {
 
                 // Getting the courses list from the database
-                var courses = (from c in context.Courses
-                               select c);
+                var courses = (from c in context.Courses.Include(c => c.Students)
+                               select c).ToList();
 
                 // Writing the courses list to the console
                 foreach (var course in courses)
