@@ -23,3 +23,4 @@ namespace EF_CodeFirst
             // Waiting for user input before closing the console window
         }
     }
+}
