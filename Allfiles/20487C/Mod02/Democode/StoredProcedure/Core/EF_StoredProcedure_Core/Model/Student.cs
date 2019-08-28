@@ -9,6 +9,6 @@ namespace EF_CodeFirst.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public virtual int Id { get; set; }
         public virtual int Grade { get; set; }
-        public virtual List<Course> Courses { get; set; }
+        public virtual ICollection<CourseStudent> Courses { get; set; } = new List<CourseStudent>();
     }
 }

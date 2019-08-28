@@ -12,6 +12,7 @@ namespace EF_Seed_Core
     {
         private static DbContextOptions<SchoolContext> GetOptions()
             => new DbContextOptionsBuilder<SchoolContext>()
+            .UseLazyLoadingProxies()
             .UseSqlServer("Data Source=(LocalDB)\\MSSQLLocalDB;Database=Module_02_Demos;Integrated Security=True;")
             .Options;
 
@@ -22,25 +23,33 @@ namespace EF_Seed_Core
             // Creating a SchoolContext to be used to access data
             using (var context = new SchoolContext(GetOptions()))
             {
+                try
+                {
+                    // Calculating the average grade for the course
+                    var averageGradeInCourse = (from c in context.Courses
+                                                where c.Name == "WCF"
+                                                select c.Students.Average(s => s.Student.Grade)).Single();
 
-                // Calculating the average grade for the course
-                var averageGradeInCourse = (from c in context.Courses
-                                            where c.Name == "WCF"
-                                            select c.Students.Average(s => s.Grade)).Single();
+                    Console.WriteLine("Average grade for the course is {0}", averageGradeInCourse);
 
-                Console.WriteLine("Average grade for the course is {0}", averageGradeInCourse);
+                    // Adding 10 points to all the students in this course using Stored Procedure called spUpdateGrades, passing the course name and the grade change
+                    context.Database.ExecuteSqlCommand("spUpdateGrades @CourseName, @GradeChange",
+                                                                new SqlParameter("@CourseName", "WCF"),
+                                                                new SqlParameter("@GradeChange", 10));
 
-                // Adding 10 points to all the students in this course using Stored Procedure called spUpdateGrades, passing the course name and the grade change
-                context.Database.ExecuteSqlCommand("spUpdateGrades @CourseName, @GradeChange",
-                                                            new SqlParameter("@CourseName", "WCF"),
-                                                            new SqlParameter("@GradeChange", 10));
+                    // Calculating the average grade for the course after the grades update
+                    var averageGradeInCourseAfterGradesUpdate = (from c in context.Courses
+                                                                 where c.Name == "WCF"
+                                                                 select c.Students.Average(s => s.Student.Grade)).Single();
 
-                // Calculating the average grade for the course after the grades update
-                var averageGradeInCourseAfterGradesUpdate = (from c in context.Courses
-                                                             where c.Name == "WCF"
-                                                             select c.Students.Average(s => s.Grade)).Single();
+                    Console.WriteLine("Average grade for the course is after 10 points upgrade is {0}", averageGradeInCourseAfterGradesUpdate);
+                    Console.ReadLine();
+                }
+                finally
+                {
+                    context.Database.EnsureDeleted();
+                }
 
-                Console.WriteLine("Average grade for the course is after 10 points upgrade is {0}", averageGradeInCourseAfterGradesUpdate);
             }
         }
 
@@ -49,6 +58,7 @@ namespace EF_Seed_Core
             using (var context = new SchoolContext(GetOptions()))
             {
                 //Ensure database is created. Not compatible with migration
+                context.Database.EnsureDeleted();
                 context.Database.EnsureCreated();
 
                 List<string> teacherNames = new List<string>() { "Kari Hensien", "Terry Adams", "Dan Park", "Peter Houston", "Lukas Keller", "Mathew Charles", "John Smith", "Andrew Davis", "Frank Miller", "Patrick Hines" };
@@ -59,7 +69,7 @@ namespace EF_Seed_Core
                 for (int i = 0; i < 10; i++)
                 {
                     var teacher = new Teacher() { Name = teacherNames[i], Salary = 100000 };
-                    var course = new Course { Name = courseNames[i], CourseTeacher = teacher, Students = new List<Student>() };
+                    var course = new Course { Name = courseNames[i], CourseTeacher = teacher, Students = new List<CourseStudent>() };
 
 
                     Random rand = new Random(i);
@@ -68,11 +78,29 @@ namespace EF_Seed_Core
                     for (int j = 0; j < 10; j++)
                     {
                         var student = new Student { Name = "Student_" + j, Grade = rand.Next(40, 90) };
-                        course.Students.Add(student);
+                        course.Students.Add(new CourseStudent { Course = course, Student = student });
                     }
                     context.Courses.Add(course);
                     context.Teachers.Add(teacher);
                 }
+                // Defining stored procedure that accepts CourceName and GradeChange as parameters and updates the grade to all the students in the course
+                string cmdCreateProcedure = @"CREATE PROCEDURE spUpdateGrades @CourseName nvarchar(30), @GradeChange int
+                                        AS
+                                        BEGIN
+	                                        DECLARE @CourseId int
+
+	                                        SELECT @CourseId = Id FROM Courses where Name = @CourseName;
+
+	                                        UPDATE Persons SET Grade = 
+								                                        (Case 
+									                                        When (Grade + @GradeChange) <= 100 Then (Grade + @GradeChange) 
+									                                        Else 100 
+								                                        End) 
+			                                        where Id In(SELECT StudentId from CourseStudent where CourseId = @CourseId) ;
+                                        END";
+
+                // Creating the stored procedure in database
+                context.Database.ExecuteSqlCommand(cmdCreateProcedure);
 
                 // Saving the changes to the database
                 context.SaveChanges();

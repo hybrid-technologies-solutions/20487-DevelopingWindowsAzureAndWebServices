@@ -9,13 +9,14 @@ namespace EF_CodeFirst
 {
     class Program
     {
+        static string ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;Database=Module_02_Demos;Integrated Security=True";
         static void Main(string[] args)
         {
             // Initializing the database and populating seed data using DropCreateDatabaseIfModelChanges initializer
-            (new DropCreateDBOnModelChanged()).InitializeDatabase(new SchoolContext());
+            (new DropCreateDBOnModelChanged()).InitializeDatabase(new SchoolContext(ConnectionString));
 
             // Creating a SchoolContext to be used to access data
-            using (var context = new SchoolContext())
+            using (var context = new SchoolContext(ConnectionString))
             {
 
                 // Calculating the average grade for the course
@@ -36,6 +37,7 @@ namespace EF_CodeFirst
                                                              select c.Students.Average(s => s.Grade)).Single();
 
                 Console.WriteLine("Average grade for the course is after 10 points upgrade is {0}", averageGradeInCourseAfterGradesUpdate);
+                Console.ReadLine();
             }
         }
     }
