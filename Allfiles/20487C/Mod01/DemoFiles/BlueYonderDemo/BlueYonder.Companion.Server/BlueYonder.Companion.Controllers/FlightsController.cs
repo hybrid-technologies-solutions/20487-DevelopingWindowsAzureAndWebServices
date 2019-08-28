@@ -10,6 +10,7 @@ using System.Web.Http;
 using BlueYonder.Companion.Entities;
 using BlueYonder.Companion.Entities.Mappers;
 using BlueYonder.Companion.WNS.WorkerRole;
+using System.Globalization;
 
 namespace BlueYonder.Companion.Controllers
 {
@@ -87,7 +88,7 @@ namespace BlueYonder.Companion.Controllers
             }
             else
             {
-                dateObj = DateTime.Parse(date);
+                dateObj = DateTime.Parse(date, new CultureInfo("en-US"));
             }
 
             // Get an IQueryable of possible schedules
