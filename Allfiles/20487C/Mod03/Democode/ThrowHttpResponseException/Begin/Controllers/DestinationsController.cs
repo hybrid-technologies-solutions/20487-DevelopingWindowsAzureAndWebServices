@@ -25,7 +25,7 @@ namespace start.Controllers
         // GET api/destinations/5
         public HttpResponseMessage Get(int id)
         {
-            var destination = _destinations.Where(d=>d.Id == id).FirstOrDefault();
+            var destination = _destinations.Where(d => d.Id == id).FirstOrDefault();
 
             if (destination != null)
                 return Request.CreateResponse<Destination>(HttpStatusCode.OK, destination);
