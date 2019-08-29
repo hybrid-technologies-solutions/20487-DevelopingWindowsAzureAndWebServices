@@ -12,11 +12,7 @@
     <AssemblyName>BlueYonder.Companion.Host.Azure</AssemblyName>
     <StartDevelopmentStorage>True</StartDevelopmentStorage>
     <Name>BlueYonder.Companion.Host.Azure</Name>
-    <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
-    
-    
-    
-    
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <UseEmulatorExpressByDefault>False</UseEmulatorExpressByDefault>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
