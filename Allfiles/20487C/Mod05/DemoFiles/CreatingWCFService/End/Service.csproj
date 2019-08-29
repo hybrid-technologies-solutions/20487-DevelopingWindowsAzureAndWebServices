@@ -5,31 +5,16 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{15B3E0D2-6217-493A-A690-158C497F5318}</ProjectGuid>
+    <ProjectGuid>{5EEC2D1F-01BE-4936-9682-BFE276EA70F3}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HotelBooking</RootNamespace>
     <AssemblyName>CreatingWCFService</AssemblyName>
-    <ProjectTypeGuids>{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <ProjectTypeGuids>{3D9AD99F-2412-4246-B90B-4EAA41C64699};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <StartArguments>/client:"WcfTestClient.exe"</StartArguments>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
-    <WcfConfigValidationEnabled>False</WcfConfigValidationEnabled>
-    <XsdCodeGenEnabled>False</XsdCodeGenEnabled>
-    <XsdCodeGenSerializerMode>XmlSerializer</XsdCodeGenSerializerMode>
-    <XsdCodeGenReuseTypesFlag>True</XsdCodeGenReuseTypesFlag>
-    <XsdCodeGenReuseTypesMode>All</XsdCodeGenReuseTypesMode>
-    <XsdCodeGenReferences />
-    <XsdCodeGenNamespaceMappings>%2a, HotelBooking.ContractTypes</XsdCodeGenNamespaceMappings>
-    <XsdCodeGenCollectionTypes>System.Array%3bSystem.Collections.Generic.Dictionary`2</XsdCodeGenCollectionTypes>
-    <XsdCodeGenExcludedTypes />
-    <XsdCodeGenImportXmlTypes>True</XsdCodeGenImportXmlTypes>
-    <XsdCodeGenGenerateSerializableTypes>True</XsdCodeGenGenerateSerializableTypes>
-    <XsdCodeGenGenerateInternalTypes>False</XsdCodeGenGenerateInternalTypes>
-    <XsdCodeGenEnableDataBinding>False</XsdCodeGenEnableDataBinding>
-    
-    
-    
-    
+    <WcfConfigValidationEnabled>True</WcfConfigValidationEnabled>
+    <XsdCodeGenEnabled>True</XsdCodeGenEnabled>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -62,18 +47,25 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BookingResponse.cs" />
+    <Compile Include="IHotelBookingService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="HotelBookingService.cs" />
+    <Compile Include="Reservation.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common\Common.csproj">
-      <Project>{8997109a-489c-4887-ba14-d887bc6a5e09}</Project>
-      <Name>Common</Name>
-    </ProjectReference>
+    <None Include="App.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ProjectExtensions>
     <VisualStudio>
+      <FlavorProperties GUID="{3D9AD99F-2412-4246-B90B-4EAA41C64699}">
+        <WcfProjectProperties>
+          <AutoStart>True</AutoStart>
+        </WcfProjectProperties>
+      </FlavorProperties>
     </VisualStudio>
   </ProjectExtensions>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

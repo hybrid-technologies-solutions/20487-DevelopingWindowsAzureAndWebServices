@@ -5,7 +5,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.50727</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{15B3E0D2-6217-493A-A690-158C497F5318}</ProjectGuid>
+    <ProjectGuid>{4FC6CA40-17F8-47D5-83AC-1472A24BECAE}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HotelBooking</RootNamespace>
@@ -26,10 +26,6 @@
     <XsdCodeGenGenerateSerializableTypes>True</XsdCodeGenGenerateSerializableTypes>
     <XsdCodeGenGenerateInternalTypes>False</XsdCodeGenGenerateInternalTypes>
     <XsdCodeGenEnableDataBinding>False</XsdCodeGenEnableDataBinding>
-    
-    
-    
-    
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">

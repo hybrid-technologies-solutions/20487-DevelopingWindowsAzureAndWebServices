@@ -9,28 +9,13 @@ namespace ServiceClient
     {
         static void Main(string[] args)
         {
-            //HotelBooking.HotelBookingServiceClient proxy =
-            //    new HotelBooking.HotelBookingServiceClient
-            //        ("BasicHttpBinding_IHotelBookingService");
+            //Add a service references with Visual Studio to generate proxies items
 
-            //HotelBooking.Reservation reservation = new HotelBooking.Reservation();
+            //Use HotelBooking.HotelBookingServiceClient with HttpBinding
 
-            //reservation.HotelName = "HotelA";
+            //Create a Reservation in HotelA for John, for 3 days, CheckinDate = Now
 
-            //reservation.GuestName = "John";
-
-            //reservation.NumberOfDays = 3;
-
-            //reservation.CheckinDate = DateTime.Now;
-
-            //HotelBooking.BookingResponse response = proxy.BookHotel(reservation);
-
-            //Console.WriteLine
-            //    ("Booking response: {0}, booking reference: {1}",
-            //    response.IsApproved ? "Approved" : "Declined",
-            //    response.BookingReference);
-
-            //Console.ReadLine();
+            //Get response and show it in console
         }
     }
 }

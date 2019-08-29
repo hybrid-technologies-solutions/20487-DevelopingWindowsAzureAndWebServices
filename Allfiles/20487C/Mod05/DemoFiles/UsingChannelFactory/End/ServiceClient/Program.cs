@@ -17,16 +17,14 @@ namespace ServiceClient
                     "http://localhost:8733/HotelBooking/HotelBookingHttp");
 
             IHotelBookingService proxy = serviceFactory.CreateChannel();
-            
-            Reservation reservation = new Reservation();
 
-            reservation.HotelName = "HotelA";
-
-            reservation.GuestName = "John";
-
-            reservation.NumberOfDays = 3;
-
-            reservation.CheckinDate = DateTime.Now;
+            Reservation reservation = new Reservation
+            {
+                HotelName = "HotelA",
+                GuestName = "John",
+                NumberOfDays = 3,
+                CheckinDate = DateTime.Now
+            };
 
             BookingResponse response = proxy.BookHotel(reservation);
 
