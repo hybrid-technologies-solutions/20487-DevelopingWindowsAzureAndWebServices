@@ -1,13 +1,10 @@
 ﻿using BlueYonder.Companion.Storage.TableEntities;
-using Microsoft.WindowsAzure;
 using Microsoft.WindowsAzure.Storage;
 using Microsoft.WindowsAzure.Storage.Blob;
 using Microsoft.WindowsAzure.Storage.Table;
-using Microsoft.WindowsAzure.Storage.Table.DataServices;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Data.Services.Client;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
