@@ -34,10 +34,9 @@ namespace BlueYonder.DataAccess.Repositories
             return null;
         }
 
-        //TODO :Lab 02 Exercise 1, Task 4.5 : unmark the GetAll Method
+        //TODO :Lab 02 Exercise 1, Task 4.5 : implement the GetAll Method
         public IQueryable<Reservation> GetAll()
         {             
-            //return context.Reservations.AsQueryable<Reservation>();
             return null;
         }
 
@@ -46,24 +45,15 @@ namespace BlueYonder.DataAccess.Repositories
             return GetAll().Where(predicate);
         }
 
-        //TODO :Lab 02 Exercise 1, Task 4.5 : unmark the Add Method
+        //TODO :Lab 02 Exercise 1, Task 4.5 : implement the Add Method
 
         public void Add(Reservation entity)
         {
-            //context.Reservations.Add(entity);
         }
 
-        //TODO :Lab 02 Exercise 1, Task 4.5 : unmark the Delete Method
+        //TODO :Lab 02 Exercise 1, Task 4.5 : implement the Delete Method
         public void Delete(Reservation entity)
         {
-             /*
-            context.Reservations.Find(entity.ReservationId);
-            if (entity.DepartFlightScheduleID != 0)
-                context.Entry(entity.DepartureFlight).State = System.Data.Entity.EntityState.Deleted;
-            if (entity.ReturnFlightScheduleID != 0)
-                context.Entry(entity.ReturnFlight).State = System.Data.Entity.EntityState.Deleted;
-            context.Reservations.Remove(entity);
-           */
         }
 
         public void Edit(Reservation entity)

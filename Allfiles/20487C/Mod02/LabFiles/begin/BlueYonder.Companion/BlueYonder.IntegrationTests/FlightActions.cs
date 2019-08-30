@@ -99,7 +99,8 @@ namespace BlueYonder.IntegrationTests
             // Update the flight number
             flight.FlightNumber = "BY002_updated";
 
-            //TODO: Lab 02 Exercise 2, Task 4.1 : Implement the UpdateFlight Method                      
+            //TODO: Lab 02 Exercise 2, Task 4.1 : Implement the UpdateFlight Method  
+            Assert.Fail();
         }
      
         [TestMethod]

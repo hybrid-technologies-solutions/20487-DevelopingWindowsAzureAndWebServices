@@ -42,7 +42,6 @@ namespace BlueYonder.DataAccess.Repositories
         public IQueryable<Reservation> GetAll()
         {
             return context.Reservations.AsQueryable<Reservation>();
-            return null;
         }
 
         public IQueryable<Reservation> FindBy(Expression<Func<Reservation, bool>> predicate)
