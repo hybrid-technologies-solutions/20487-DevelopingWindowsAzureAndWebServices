@@ -43,7 +43,7 @@ namespace BlueYonder.Companion.Client
             var sensor = SimpleOrientationSensor.GetDefault();
             if (sensor != null)
             {
-                sensor.OrientationChanged += Sensor_OrientationChanged; ;
+                sensor.OrientationChanged += Sensor_OrientationChanged;
             }
         }
 
@@ -59,7 +59,7 @@ namespace BlueYonder.Companion.Client
                 orientation = ApplicationViewState.FullScreenLandscape.ToString();
             }
 
-            Control control = this._rootFrame.Content as Control;
+            Control control = this._rootFrame?.Content as Control;
             if (control != null)
             {
                 VisualStateManager.GoToState(control, orientation, false);
