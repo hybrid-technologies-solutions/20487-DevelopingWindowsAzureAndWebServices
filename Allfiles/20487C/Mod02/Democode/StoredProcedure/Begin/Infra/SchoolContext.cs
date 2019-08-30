@@ -1,6 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
+using System.Data.Entity.Infrastructure;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,11 +13,6 @@ namespace EF_CodeFirst.Infra
 {
     public class SchoolContext : DbContext
     {
-        public SchoolContext(string connectionString)
-            : base(connectionString)
-        {
-
-        }
         public virtual DbSet<Person> Persons { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }

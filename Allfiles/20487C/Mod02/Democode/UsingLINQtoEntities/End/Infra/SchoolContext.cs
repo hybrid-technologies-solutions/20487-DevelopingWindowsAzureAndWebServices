@@ -10,11 +10,6 @@ namespace EF_CodeFirst.Infra
 {
     public class SchoolContext : DbContext
     {
-        public SchoolContext(string connectionString)
-            : base(connectionString)
-        {
-
-        }
         public virtual DbSet<Person> Persons { get; set; }
         public virtual DbSet<Student> Students { get; set; }
         public virtual DbSet<Teacher> Teachers { get; set; }

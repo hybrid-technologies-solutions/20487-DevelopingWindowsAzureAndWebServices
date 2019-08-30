@@ -7,11 +7,10 @@ namespace EF_CodeFirst
 {
     class Program
     {
-        static string ConnectionString = "Data Source=(LocalDB)\\MSSQLLocalDB;Database=Module_02_Demos;Integrated Security=True";
         static void Main(string[] args)
         {
             // Initializing the database and populating seed data using DropCreateDatabaseIfModelChanges initializer
-            (new DropCreateDBOnModelChanged()).InitializeDatabase(new SchoolContext(ConnectionString));
+            (new DropCreateDBOnModelChanged()).InitializeDatabase(new SchoolContext());
 
             // Creating a SchoolContext to be used to access data
 
