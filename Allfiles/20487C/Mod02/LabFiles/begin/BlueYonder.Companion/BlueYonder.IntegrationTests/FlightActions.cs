@@ -10,7 +10,7 @@ using BlueYonder.DataAccess.Repositories;
 
 namespace BlueYonder.IntegrationTests
 {
-    
+
     // The database initializer create test data and clear any existing remains from previous runs, before running the tests
     [TestClass]
     public class FlightActions
@@ -61,10 +61,10 @@ namespace BlueYonder.IntegrationTests
             {
                 Flight newFlight = flightRepository.GetFlight(flightNumber);
                 Assert.AreEqual(newFlight.FlightNumber, flightNumber);
-                Assert.AreEqual(newFlight.Destination.City, "New-York");
-                Assert.AreEqual(newFlight.Source.City, "Paris");
-                Assert.AreEqual(newFlight.Schedules.First().Departure, takeOff);
-                Assert.AreEqual(newFlight.Schedules.First().Duration.TotalMinutes, 150);
+                Assert.AreEqual("New-York", newFlight.Destination.City);
+                Assert.AreEqual("Paris", newFlight.Source.City);
+                Assert.AreEqual(takeOff, newFlight.Schedules.First().Departure);
+                Assert.AreEqual(150, newFlight.Schedules.First().Duration.TotalMinutes);
             }
         }
 
@@ -93,7 +93,7 @@ namespace BlueYonder.IntegrationTests
             // This test checks if the repository is able of updating an entity 
             // that was updated outside of the repository (for example, 
             // an updated entity sent to the service)
-             
+
             // The instance created here has the same values as the DB entity
             Flight flight = new Flight { FlightId = 3, FlightNumber = "BY002" };
             // Update the flight number
@@ -102,7 +102,7 @@ namespace BlueYonder.IntegrationTests
             //TODO: Lab 02 Exercise 2, Task 4.1 : Implement the UpdateFlight Method  
             Assert.Fail();
         }
-     
+
         [TestMethod]
         public void UpdateUsingTwoRepositories()
         {
@@ -115,7 +115,7 @@ namespace BlueYonder.IntegrationTests
             {
                 // Update flight and location
                 flight = flightRepository.FindBy(f => f.FlightNumber == "BY001").Single();
-                flight.FlightNumber = "BY001_updated";                
+                flight.FlightNumber = "BY001_updated";
                 // Since the flight was retrieved using the current repository, 
                 // we don't need to call the Edit method
                 flightRepository.Save();
@@ -126,25 +126,13 @@ namespace BlueYonder.IntegrationTests
                 // we don't need to call the Edit method
                 locationRepository.Save();
 
-                //TODO: Lab 02, Exercise 2 Task 5.2 : Review the query for the updated flight that is inside the transaction scope               
-                flightFromDb = (from f in flightRepository.GetAll()
-                                where f.Source.City == "Rome_updated"
-                                select f).FirstOrDefault();
+                //TODO: Lab 02, Exercise 2 Task 5.2 : Get flight to check is updated
 
-                Assert.IsNotNull(flightFromDb);
-                Assert.AreEqual(flightFromDb.FlightNumber, "BY001_updated");
-
-                // Do not commit the transaction
-                //scope.Complete();
+                //TODO : Revert transaction
             }
 
 
-            //TODO: Lab 02, Exercise 2 Task 5.4 : Review the query for the updated flight that is outside the transaction scope
-            flightFromDb = (from f in flightRepository.GetAll()
-                            where f.Source.City == "Rome_updated"
-                            select f).FirstOrDefault();
-
-            Assert.IsNull(flightFromDb);
+            //TODO: Lab 02, Exercise 2 Task 5.4 : Check that update flight has been reverted
 
             locationRepository.Dispose();
             flightRepository.Dispose();
