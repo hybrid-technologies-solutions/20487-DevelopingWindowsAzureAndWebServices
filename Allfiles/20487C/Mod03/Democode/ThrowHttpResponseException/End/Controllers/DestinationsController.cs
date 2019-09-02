@@ -1,4 +1,4 @@
-﻿using end.Models;
+﻿    using end.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,7 +25,7 @@ namespace end.Controllers
         // GET api/destinations/5
         public Destination Get(int id)
         {
-            var destination = _destinations.Where(d=>d.Id == id).FirstOrDefault();
+            var destination = _destinations.Find(d=>d.Id == id);
 
             if (destination == null)
                 throw new HttpResponseException(

@@ -23,14 +23,7 @@ namespace start.Controllers
         }
 
         // GET api/destinations/5
-        public HttpResponseMessage Get(int id)
-        {
-            var destination = _destinations.Where(d => d.Id == id).FirstOrDefault();
+        public Destination Get(int id) => _destinations.Find(d => d.Id == id);
 
-            if (destination != null)
-                return Request.CreateResponse<Destination>(HttpStatusCode.OK, destination);
-            else
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-        }
     }
 }
