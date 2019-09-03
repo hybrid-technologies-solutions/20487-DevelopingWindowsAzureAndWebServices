@@ -40,7 +40,10 @@
 
     @section Scripts {
         <script type="text/javascript">
-
+            $("#deleteLocation").submit(function (event) {
+                event.preventDefault();
+                //TODO call server with $.ajax
+            });
             $(function () {
                 $.getJSON('destinations/', function (data) {
                     var html = '';
