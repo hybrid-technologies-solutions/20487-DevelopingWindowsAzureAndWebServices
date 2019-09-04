@@ -106,28 +106,28 @@ namespace BlueYonder.Companion.Client.ViewModels
         private async void PurchaseApp(object obj)
         {
 			// TODO: Module 12: Exercise 1: Task 3.2: Implement the PurchaseApp method
-            await LicenseManager.Instance.PurchaseAppAsync();
+            await Helpers.LicenseManager.Instance.PurchaseAppAsync();
         }
 
         // TODO: Module 12: Exercise 1: Task 3.2: Implement the CanExecutePurchaseApp method
         private bool CanExecutePurchaseApp(object obj)
         {
 		 // TODO: Module 12: Exercise 1: Task 3.2: Implement the CanExecutePurchaseApp method
-            return LicenseManager.Instance.IsTrialLicense;
+            return Helpers.LicenseManager.Instance.IsTrialLicense;
         }
 
 
         private async void PurchaseMediaFeature(object obj)
         {
         // TODO: Module 12: Exercise 2: Task 1.3: Implement the PurchaseMediaFeature method
-            await LicenseManager.Instance.PurchaseMediaFeatureAsync();
+            await Helpers.LicenseManager.Instance.PurchaseMediaFeatureAsync();
         }
 
 
         private bool CanExecutePurchaseMediaFeatureCommand(object obj)
         {
         // TODO: Module 12: Exercise 2: Task 1.3: Implement the CanExecutePurchaseMediaFeature method
-            return !LicenseManager.Instance.IsMediaFeatureEnabled;
+            return !Helpers.LicenseManager.Instance.IsMediaFeatureEnabled;
         }
     }
 }

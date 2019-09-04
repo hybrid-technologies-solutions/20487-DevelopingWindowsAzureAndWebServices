@@ -114,25 +114,13 @@ namespace BlueYonder.Companion.Client.Helpers
         /// <returns></returns>
         public async Task UpdateTravelerAsync(Traveler traveler)
         {
-            // TODO: Lab 03 Exercise 2: Task 1.11: Review the UpdateTravelerAsync method
-            var dto = traveler.ToDTO();
-            dto.TravelerUserIdentity = GetHardwareId();
-            var serializedTraveler = JsonSerializerHelper.Serialize(dto);
-            var uri = new Uri(string.Format(Addresses.UpdateTravelerUri, traveler.TravelerId));
-            await PutAsync(uri, serializedTraveler);
+            // TODO: Lab 03 Exercise 2: Task 1.11: Implement the UpdateTravelerAsync method
         }
 
         public async Task<Traveler> CreateTravelerAsync()
         {
-            // TODO: Lab 03 Exercise 2: Task 1.9: Review the CreateTravelerAsync method
-            var dto = new TravelerDTO()
-            {
-                TravelerUserIdentity = GetHardwareId()
-            };
-            var json = JsonSerializerHelper.Serialize(dto);
-            var uri = new Uri(Addresses.CreateTravelerUri);
-            var response = await PostAsync(uri, json);
-            return JsonSerializerHelper.Deserialize<TravelerDTO>(response.Content).ToObject();
+            // TODO: Lab 03 Exercise 2: Task 1.9: Implement the CreateTravelerAsync method
+            return null;
         }
 
         /// <summary>
