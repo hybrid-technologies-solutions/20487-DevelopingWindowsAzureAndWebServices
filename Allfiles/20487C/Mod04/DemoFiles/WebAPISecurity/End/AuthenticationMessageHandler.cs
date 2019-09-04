@@ -54,6 +54,10 @@ namespace WebAPISecurity
                 IIdentity identity = new GenericIdentity(username);
                 IPrincipal principal = new GenericPrincipal(identity, new[] { "Users", "Admins" });
                 Thread.CurrentPrincipal = principal;
+                if (HttpContext.Current != null)
+                {
+                    HttpContext.Current.User = principal;
+                }
                 return true;
             }
             return false;
