@@ -18,7 +18,7 @@ namespace BlueYonder.Companion.Controllers
     public class ReservationsController : ApiController
     {
         // TODO: Module 5: Exercise 3: Task 3.1: Create an instance of the channel factory 
-        
+
 
         public IReservationRepository Reservations { get; set; }
 
@@ -81,7 +81,7 @@ namespace BlueYonder.Companion.Controllers
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
-        
+
         private string CreateReservationOnBackendSystem(Reservation reservation)
         {
             // TODO: Module 5: Exercise 3: Task 3.2: Uncomment the Dto creation objects.   
@@ -113,23 +113,14 @@ namespace BlueYonder.Companion.Controllers
              */
 
             // TODO: Module 5: Exercise 3: Task 3.2: Create a channel Factory 
-            try
-            {
-                // TODO: Module 5: Exercise 3: Task 3.3: Call the service and return the result
 
-            }
+            // TODO: Module 5: Exercise 3: Task 3.3: Call the service and return the result
+
 
             // TODO: Module 5: Exercise 3: Task 3.4: Call the service and return the result
-            catch (HttpException fault)
-            {
-                    
-            }
-            catch (Exception)
-            {
-                // TODO: Module 5: Exercise 3: Task 3.5: abort the communication in case of Exception
-               
-                throw;
-            }
+
+            // TODO: Module 5: Exercise 3: Task 3.5: abort the communication in case of Exception
+
             return null;
         }
 
