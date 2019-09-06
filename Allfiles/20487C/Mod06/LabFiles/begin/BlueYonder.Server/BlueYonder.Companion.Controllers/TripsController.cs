@@ -86,43 +86,35 @@ namespace BlueYonder.Companion.Controllers
             Reservations.UpdateTrip(orignalEntity, trip.FromTripDTO());
             Reservations.Save();
 
-            
-            // send a reservation update request to the backend booking service
-            // TODO: Lab 6 Exercise 2 Task 4.1 - Review the disabled code of the backend WCF service
-            //UpdateReservationOnBackendSystem(reservation, orignalEntity, flightDirection);
 
+            // send a reservation update request to the backend booking service
+
+            UpdateReservationOnBackendSystem(reservation, orignalEntity, flightDirection);
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         private void UpdateReservationOnBackendSystem(Reservation reservation, Trip trip, FlightDirections flightDirection)
         {
-            IBookingService proxy = factory.CreateChannel();
+            //Create channel to IBookingService
 
-            try
+            //Open communication
+
+            //Create tripUpdateDTO
+            TripUpdateDto tripUpdateRequest = new TripUpdateDto
             {
-                (proxy as ICommunicationObject).Open();
-
-
-                TripUpdateDto tripUpdateRequest = new TripUpdateDto
+                FlightDirection = flightDirection,
+                ReservationConfirmationCode = reservation.ConfirmationCode,
+                TripToUpdate = new TripDto
                 {
-                    FlightDirection = flightDirection,
-                    ReservationConfirmationCode = reservation.ConfirmationCode,
-                    TripToUpdate = new TripDto
-                    {
-                        FlightScheduleID = reservation.DepartureFlight.FlightScheduleID,
-                        Class = reservation.DepartureFlight.Class,
-                        Status = reservation.DepartureFlight.Status
-                    }
-                };
+                    FlightScheduleID = reservation.DepartureFlight.FlightScheduleID,
+                    Class = reservation.DepartureFlight.Class,
+                    Status = reservation.DepartureFlight.Status
+                }
+            };
 
-                proxy.UpdateTrip(tripUpdateRequest);
-
-                (proxy as ICommunicationObject).Close();
-            }
-            catch (Exception)
-            {
-                (proxy as ICommunicationObject).Abort();
-            }
+            //Update trip on proxy
+            
+            //Close
         }
     }
 }

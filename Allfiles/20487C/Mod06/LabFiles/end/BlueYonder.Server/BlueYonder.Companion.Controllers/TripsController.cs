@@ -88,8 +88,7 @@ namespace BlueYonder.Companion.Controllers
 
             
             // send a reservation update request to the backend booking service
-            // TODO: Lab 6 Exercise 2 Task 4.1 - Review the disabled code of the backend WCF service
-            //UpdateReservationOnBackendSystem(reservation, orignalEntity, flightDirection);
+            UpdateReservationOnBackendSystem(reservation, orignalEntity, flightDirection);
 
             return Request.CreateResponse(HttpStatusCode.OK);
         }

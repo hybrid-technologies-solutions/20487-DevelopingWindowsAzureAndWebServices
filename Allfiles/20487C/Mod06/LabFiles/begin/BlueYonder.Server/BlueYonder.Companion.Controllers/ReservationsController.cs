@@ -60,8 +60,6 @@ namespace BlueYonder.Companion.Controllers
             
             
             string confirmationCode = "";
-            // TODO: Lab 6 Exercise 2 Task 4.1 - Review the disabled code of the backend WCF service
-            //string confirmationCode = CreateReservationOnBackendSystem(newReservation);
 
             newReservation.ConfirmationCode = confirmationCode;
             Reservations.Add(newReservation);

@@ -59,7 +59,7 @@ namespace BlueYonder.Companion.Client
                 orientation = ApplicationViewState.FullScreenLandscape.ToString();
             }
 
-            Control control = this._rootFrame.Content as Control;
+            Control control = this._rootFrame?.Content as Control;
             if (control != null)
             {
                 VisualStateManager.GoToState(control, orientation, false);

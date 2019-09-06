@@ -54,14 +54,10 @@ namespace BlueYonder.Companion.Controllers
         public HttpResponseMessage Post([FromBody]CompanionDTO.ReservationDTO reservation)
         {            
             // saving the new order to the database
-            Reservation newReservation = CompanionDTOMappers.ReservationExtensions.FromReservationDTO(reservation);            
+            Reservation newReservation = CompanionDTOMappers.ReservationExtensions.FromReservationDTO(reservation);
 
             // send a reservation creation request to the backend booking service.
-            
-            
-            string confirmationCode = "";
-            // TODO: Lab 6 Exercise 2 Task 4.1 - Review the disabled code of the backend WCF service
-            //string confirmationCode = CreateReservationOnBackendSystem(newReservation);
+            string confirmationCode = CreateReservationOnBackendSystem(newReservation);
 
             newReservation.ConfirmationCode = confirmationCode;
             Reservations.Add(newReservation);
