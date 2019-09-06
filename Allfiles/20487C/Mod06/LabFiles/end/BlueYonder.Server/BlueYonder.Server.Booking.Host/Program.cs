@@ -10,7 +10,7 @@ namespace BlueYonder.BookingService.Host
         {
             Console.WriteLine("Server Database Is Initializing...");
             var dbInitializer = new FlightScheduleDatabaseInitializer();
-            dbInitializer.InitializeDatabase(new TravelCompanionContext(Implementation.BookingService.ConnectionName));
+            dbInitializer.InitializeDatabase(new TravelCompanionContext());
 
             var host = new ServiceHost(typeof(Implementation.BookingService));
 
