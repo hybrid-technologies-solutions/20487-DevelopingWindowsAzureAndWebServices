@@ -4,7 +4,7 @@
     {
         public static string BaseUri
         {
-            get { return "http://localhost:1234/BlueYonder.Companion.Host/"; }
+            get { return "https://blueyondercompanionhost20190906021905.azurewebsites.net/"; }
         }
 
         public static string GetLocationsUri
