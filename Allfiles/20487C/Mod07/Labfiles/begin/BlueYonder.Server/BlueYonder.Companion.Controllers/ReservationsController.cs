@@ -62,7 +62,7 @@ namespace BlueYonder.Companion.Controllers
             string confirmationCode = "";
             // send a reservation creation request to the backend booking service.
             // TODO: Lab 07, Exercise 1: Task 4.3: Bring back the call to the backend WCF service
-            //confirmationCode = CreateReservationOnBackendSystem(newReservation);
+            confirmationCode = CreateReservationOnBackendSystem(newReservation);
 
             newReservation.ConfirmationCode = confirmationCode;
             Reservations.Add(newReservation);
