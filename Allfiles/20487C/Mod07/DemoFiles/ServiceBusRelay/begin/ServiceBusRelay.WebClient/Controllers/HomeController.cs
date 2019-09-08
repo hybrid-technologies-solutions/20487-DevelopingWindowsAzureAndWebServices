@@ -22,17 +22,7 @@ namespace ServiceBusRelay.WebClient.Controllers
             var factory = new ChannelFactory<IConsoleService>(new NetTcpBinding(),
                                                               new EndpointAddress("net.tcp://127.0.0.1:747/console"));
             var proxy = factory.CreateChannel();
-            try
-            {
-                proxy.Write(text);
-            }
-            catch (Exception)
-            {
-
-                throw;
-            }
-
-
+            proxy.Write(text);
             (proxy as IClientChannel).Close();
             return Redirect(Request.ApplicationPath);
         }
