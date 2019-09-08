@@ -86,9 +86,17 @@ namespace ServiceBusTopicPublisher
             TopicClient topicClient = TopicClient.Create("productsalestopic");
 
             // Sending the messages to service bus
+            Console.WriteLine("Press enter to send shoes (2k$)");
+            Console.ReadLine();
             topicClient.Send(ShoesMessage);
+            Console.WriteLine("Press enter to send pants (5k$)");
+            Console.ReadLine();
             topicClient.Send(PantsMessage);
+            Console.WriteLine("Press enter to send shirt (3k$)");
+            Console.ReadLine();
             topicClient.Send(ShirtMessage);
+            Console.WriteLine("Press enter to send shirt (6k$)");
+            Console.ReadLine();
             topicClient.Send(JacketMessage);
 
             Console.WriteLine("Sending complete");            
