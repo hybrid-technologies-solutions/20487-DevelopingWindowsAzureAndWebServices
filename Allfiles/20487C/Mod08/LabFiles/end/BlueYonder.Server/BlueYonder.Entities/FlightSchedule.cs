@@ -27,8 +27,8 @@ namespace BlueYonder.Entities
         [DataMember]
         public TimeSpan Duration { get; set; }
 
-        [DataMember]
-        public int FlightId { get; set; }
+        //[DataMember]
+        //public int FlightId { get; set; }
 
         [JsonIgnore]
         [XmlIgnore]

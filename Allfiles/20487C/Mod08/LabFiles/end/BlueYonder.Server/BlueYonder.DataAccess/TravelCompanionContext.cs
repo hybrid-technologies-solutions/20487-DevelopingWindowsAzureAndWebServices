@@ -42,7 +42,7 @@ namespace BlueYonder.DataAccess
             modelBuilder.Entity<FlightSchedule>()
                 .HasRequired(fs => fs.Flight)
                 .WithMany(f => f.Schedules)
-                .Map(m => m.MapKey("FlightID"));
+                .Map(m => m.MapKey("FlightId"));
         }
     }
 }

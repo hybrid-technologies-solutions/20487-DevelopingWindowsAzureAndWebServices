@@ -4,7 +4,7 @@
     {
         public static string BaseUri
         {
-            get { return "http://[blueyonder.companion webapp].azurewebsites.net/"; }
+            get { return "http://localhost:49698/"; }
         }
 
         public static string GetLocationsUri
