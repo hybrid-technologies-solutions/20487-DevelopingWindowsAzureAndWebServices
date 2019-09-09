@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Linq;
 using System.Net;
 using System.Net.Http;
@@ -12,8 +13,7 @@ namespace WebConfigTransformations.Controllers
         // GET api/values
         public IQueryable<string> Get()
         {
-            throw new Exception();
-            return new string[] { "value1", "value2" }.AsQueryable();
+            return ConfigurationManager.AppSettings["Values"].Split(',').AsQueryable();
         }
 
         // GET api/values/5
