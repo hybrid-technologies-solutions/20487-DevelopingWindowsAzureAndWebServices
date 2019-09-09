@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
+using System.Threading.Tasks;
 using System.Web;
 using System.Web.Configuration;
 using System.Web.Http;
@@ -15,14 +16,14 @@ namespace BlueYonder.FlightsManager.Controllers
     {
         string _companionService = WebConfigurationManager.AppSettings["webapi:BlueYonderCompanionService"];
 
-        public ActionResult Index()
+        public async Task<ActionResult> Index()
         {
             IEnumerable<LocationDTO> locations = null;
 
             using (var proxy = new HttpClient() { BaseAddress = new Uri(_companionService) })
             {
-                locations = proxy.GetAsync("Locations?$orderby=Country,City").Result.Content.
-                    ReadAsAsync<IEnumerable<LocationDTO>>().Result;
+                locations = (await (await proxy.GetAsync("Locations?$orderby=Country,City")).Content.
+                    ReadAsAsync<IEnumerable<LocationDTO>>());
             }
 
             return View(locations);            

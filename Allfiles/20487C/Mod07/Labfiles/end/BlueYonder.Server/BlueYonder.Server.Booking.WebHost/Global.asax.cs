@@ -16,8 +16,8 @@ namespace BlueYonder.Server.Booking.WebHost
 
         protected void Application_Start(object sender, EventArgs e)
         {
-var dbInitializer = new FlightScheduleDatabaseInitializer();
-dbInitializer.InitializeDatabase(new TravelCompanionContext(BlueYonder.BookingService.Implementation.BookingService.ConnectionName));
+            var dbInitializer = new FlightScheduleDatabaseInitializer();
+            dbInitializer.InitializeDatabase(new TravelCompanionContext(BlueYonder.BookingService.Implementation.BookingService.ConnectionName));
         }
 
         protected void Session_Start(object sender, EventArgs e)
