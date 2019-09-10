@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29230.47
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{85C03D0A-4881-4137-AE41-2E85140EE1B1}"
 	ProjectSection(SolutionItems) = preProject
@@ -23,6 +23,10 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueYonder.Companion.Entities.Mappers", "BlueYonder.Companion.Entities.Mappers\BlueYonder.Companion.Entities.Mappers.csproj", "{F583E8B5-47FE-4495-931D-F73F78C1207D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueYonder.BookingService.Contracts", "BlueYonder.BookingService.Contracts\BlueYonder.BookingService.Contracts.csproj", "{075790D2-60A8-4E8E-AC0C-5577BAE2AC28}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlueYonder.Companion.Functions", "..\..\end\BlueYonder.Server\BlueYonder.Companion.Functions\BlueYonder.Companion.Functions.csproj", "{1D73CE07-4D75-4561-80AC-0400B267CB9B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlueYonder.Companion.WNS", "..\..\end\BlueYonder.Server\BlueYonder.Companion.WNS\BlueYonder.Companion.WNS.csproj", "{53645A7A-8EF9-4769-BE05-5D86399E54C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -116,6 +120,38 @@ Global
 		{075790D2-60A8-4E8E-AC0C-5577BAE2AC28}.Release|ARM.ActiveCfg = Release|Any CPU
 		{075790D2-60A8-4E8E-AC0C-5577BAE2AC28}.Release|x64.ActiveCfg = Release|Any CPU
 		{075790D2-60A8-4E8E-AC0C-5577BAE2AC28}.Release|x86.ActiveCfg = Release|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Debug|ARM.Build.0 = Debug|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Debug|x64.Build.0 = Debug|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Debug|x86.Build.0 = Debug|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Release|ARM.ActiveCfg = Release|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Release|ARM.Build.0 = Release|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Release|x64.ActiveCfg = Release|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Release|x64.Build.0 = Release|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Release|x86.ActiveCfg = Release|Any CPU
+		{1D73CE07-4D75-4561-80AC-0400B267CB9B}.Release|x86.Build.0 = Release|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Debug|ARM.ActiveCfg = Debug|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Debug|ARM.Build.0 = Debug|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Debug|x64.Build.0 = Debug|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Debug|x86.Build.0 = Debug|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Release|ARM.ActiveCfg = Release|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Release|ARM.Build.0 = Release|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Release|x64.ActiveCfg = Release|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Release|x64.Build.0 = Release|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Release|x86.ActiveCfg = Release|Any CPU
+		{53645A7A-8EF9-4769-BE05-5D86399E54C7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

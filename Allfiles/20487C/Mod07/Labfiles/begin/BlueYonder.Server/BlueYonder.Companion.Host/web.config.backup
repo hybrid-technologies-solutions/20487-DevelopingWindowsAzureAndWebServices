@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <!--
   For more information on how to configure your ASP.NET application, please visit
   http://go.microsoft.com/fwlink/?LinkId=169433
@@ -19,8 +19,7 @@
     <add key="UnobtrusiveJavaScriptEnabled" value="true" />
     <add key="ClientSecret" value="S2a6PDKWlUzA7ssYCBd8O5i0GuQkjMsR" />
     <add key="PackageSID" value="ms-app://s-1-15-2-804510873-4112877217-2039999982-3203059786-1386140831-4235943992-2688668613" />
-    <add key="BlueYonderStore" value="{storageConnectionString}" />
-    <add key="ServiceBusConnectionString" value="Endpoint=sb://blueyonder-lab07-servicebus-cmo.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=Bqas/T3UsawqFjSJZABpFBcsAs79bpPLQR8YHk11+eg=" />
+    <add key="BlueYonderStore" value="{storageConnectionString}"/>
   </appSettings>
   <!--
     For a description of web.config changes see http://go.microsoft.com/fwlink/?LinkId=235367.
@@ -35,7 +34,6 @@
     <compilation debug="true" targetFramework="4.6.2" />
     <httpRuntime targetFramework="4.5" />
     <authentication mode="None" />
-    <customErrors mode="Off" />
     <pages>
       <namespaces>
         <add namespace="System.Web.Helpers" />
@@ -98,7 +96,7 @@
       </dependentAssembly>
       <dependentAssembly>
         <assemblyIdentity name="System.Spatial" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-5.8.3.0" newVersion="5.8.3.0" />
+        <bindingRedirect oldVersion="0.0.0.0-5.0.2.0" newVersion="5.0.2.0" />
       </dependentAssembly>
       <dependentAssembly>
         <assemblyIdentity name="Microsoft.Data.OData" publicKeyToken="31bf3856ad364e35" culture="neutral" />
@@ -106,19 +104,15 @@
       </dependentAssembly>
       <dependentAssembly>
         <assemblyIdentity name="System.Net.Http.Formatting" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-5.2.3.0" newVersion="5.2.3.0" />
+        <bindingRedirect oldVersion="0.0.0.0-4.1.0.0" newVersion="4.1.0.0" />
       </dependentAssembly>
       <dependentAssembly>
         <assemblyIdentity name="Newtonsoft.Json" publicKeyToken="30ad4fe6b2a6aeed" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-12.0.0.0" newVersion="12.0.0.0" />
+        <bindingRedirect oldVersion="0.0.0.0-6.0.0.0" newVersion="6.0.0.0" />
       </dependentAssembly>
       <dependentAssembly>
         <assemblyIdentity name="Microsoft.Data.Services.Client" publicKeyToken="31bf3856ad364e35" culture="neutral" />
         <bindingRedirect oldVersion="0.0.0.0-5.8.3.0" newVersion="5.8.3.0" />
-      </dependentAssembly>
-      <dependentAssembly>
-        <assemblyIdentity name="System.Web.Http" publicKeyToken="31bf3856ad364e35" culture="neutral" />
-        <bindingRedirect oldVersion="0.0.0.0-5.2.3.0" newVersion="5.2.3.0" />
       </dependentAssembly>
     </assemblyBinding>
   </runtime>
@@ -138,14 +132,14 @@
         <behavior>
           <transportClientEndpointBehavior>
             <tokenProvider>
-              <sharedAccessSignature keyName="RootManageSharedAccessKey" key="+QLSZuiSee5M8HHOwCZUNOcI7s1ZK+3PXDPdfytXW6Y=" />
+              <sharedAccessSignature keyName="RootManageSharedAccessKey" key="{ServiceBusRelaySASKey}" />
             </tokenProvider>
           </transportClientEndpointBehavior>
         </behavior>
       </endpointBehaviors>
     </behaviors>
     <client>
-      <endpoint address="sb://BlueYonderLab07Relay-cmo.servicebus.windows.net/booking" binding="netTcpRelayBinding" contract="BlueYonder.BookingService.Contracts.IBookingService" name="BookingTcp" />
+      <endpoint address="sb://blueyonder-relay-cmo.servicebus.windows.net/booking" binding="netTcpRelayBinding" contract="BlueYonder.BookingService.Contracts.IBookingService" name="BookingTcp" />
     </client>
     <extensions>
       <!-- In this extension section we are introducing all known service bus extensions. User can remove the ones they don't need. -->

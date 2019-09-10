@@ -20,8 +20,14 @@ namespace BlueYonder.Companion.Controllers
         public static QueueClient ConnectToQueue()
         {
             //TODO: Lab07, Exercise 2, Task 1.4 : Implement the ConnectToQueue Method.
+            var connectionString = ConfigurationManager.AppSettings["ServiceBusConnectionString"];
+            var manager = NamespaceManager.CreateFromConnectionString(connectionString);
+            if(manager.QueueExists(QueueName))
+            {
+                manager.CreateQueue(QueueName);
+            }
 
-            return null;
+            return QueueClient.CreateFromConnectionString(connectionString, QueueName);
 
         }
 

@@ -35,7 +35,7 @@ namespace BlueYonder.Companion.Client.Helpers
             // Create a push notifications channel
             var channel = await PushNotificationChannelManager.CreatePushNotificationChannelForApplicationAsync();
             channel.PushNotificationReceived += Channel_PushNotificationReceived;
-            var hub = new NotificationHub("blueyonder07Hub", "[NotificationHub connection string]");
+            var hub = new NotificationHub("blueyonder07Hub", "Endpoint=sb://blueyonder07-cmo.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=JWVvDuzQrQr8oN+QGFYQvp6nuk84Y9cQtruJQ1QnQKY=");
             var result = await hub.RegisterNativeAsync(channel.Uri, new string[] {
                 $"user-{userAuth.Traveler.TravelerId}"
             });

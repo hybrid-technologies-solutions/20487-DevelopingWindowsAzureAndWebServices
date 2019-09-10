@@ -17,7 +17,12 @@ namespace BlueYonder.Companion.Controllers
     {
         private IFlightRepository Flights;
         private ILocationRepository Locations;
+        private static QueueClient queueClient;
 
+        static FlightsController()
+        {
+            queueClient = ServiceBusQueueHelper.ConnectToQueue();
+        }
 
         public FlightsController(IFlightRepository flights, ILocationRepository locations)
         {
@@ -67,6 +72,10 @@ namespace BlueYonder.Companion.Controllers
             Flights.Save();
 
             // TODO: Lab07, Exercise 2, Task 1.6 : Send a flight update message to the queue
+            var msg = new BrokeredMessage(updatedScheduleDto);
+            msg.ContentType = "UpdatedSchedule";
+            queueClient.Send(msg);
+
             HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.OK);
             return response;
         }

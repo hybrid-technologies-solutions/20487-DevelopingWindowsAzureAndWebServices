@@ -4,7 +4,7 @@
     {
         public static string BaseUri
         {
-            get { return "http://[Web Api web app name].azurewebsites.net/"; }
+            get { return "https://blueyondercompanionhost20190909074152.azurewebsites.net/"; }
         }
 
         public static string GetLocationsUri
