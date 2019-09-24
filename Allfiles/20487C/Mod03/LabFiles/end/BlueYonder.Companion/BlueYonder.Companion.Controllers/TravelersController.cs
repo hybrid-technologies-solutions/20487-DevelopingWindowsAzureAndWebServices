@@ -32,6 +32,10 @@ namespace BlueYonder.Companion.Controllers
 
         public HttpResponseMessage Post(Traveler traveler)
         {
+            if(Travelers.FindBy(t => t.TravelerUserIdentity == traveler.TravelerUserIdentity).Any())
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
             // saving the new order to the database
             Travelers.Add(traveler);
             Travelers.Save();
@@ -39,7 +43,7 @@ namespace BlueYonder.Companion.Controllers
             // creating the response, the newly saved entity and 201 Created status code
             var response = Request.CreateResponse(HttpStatusCode.Created, traveler);
 
-            response.Headers.Location = new Uri(Request.RequestUri, traveler.TravelerId.ToString());
+            response.Headers.Location = new Uri(Request.RequestUri, "travelers/" + traveler.TravelerUserIdentity);
             return response;
         }
 
