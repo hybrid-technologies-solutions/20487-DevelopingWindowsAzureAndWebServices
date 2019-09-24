@@ -126,7 +126,7 @@ namespace BlueYonder.Companion.Client.Helpers
             var dto = traveler.ToDTO();
             dto.TravelerUserIdentity = GetHardwareId();
             var serializedTraveler = JsonSerializerHelper.Serialize(dto);
-            var uri = new Uri(string.Format(Addresses.UpdateTravelerUri, traveler.TravelerId));
+            var uri = new Uri(string.Format(Addresses.UpdateTravelerUri, GetHardwareId()));
             await PutAsync(uri, serializedTraveler);
         }
 

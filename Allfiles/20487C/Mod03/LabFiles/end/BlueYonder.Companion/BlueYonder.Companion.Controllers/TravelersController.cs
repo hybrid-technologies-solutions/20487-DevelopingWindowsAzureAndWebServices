@@ -52,7 +52,10 @@ namespace BlueYonder.Companion.Controllers
             // returning 404 if the entity doesn't exist 
             if (travelers.FindBy(t => t.TravelerUserIdentity == id).FirstOrDefault() == null)
                 return Request.CreateResponse(HttpStatusCode.NotFound);
-
+            if(traveler.TravelerId == 0)
+            {
+                return Request.CreateResponse(HttpStatusCode.BadRequest);
+            }
             travelers.Edit(traveler);
             travelers.Save();
             return Request.CreateResponse(HttpStatusCode.OK);
