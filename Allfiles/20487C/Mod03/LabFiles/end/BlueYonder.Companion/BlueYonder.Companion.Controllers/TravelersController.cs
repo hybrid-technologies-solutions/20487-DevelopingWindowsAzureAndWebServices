@@ -12,16 +12,16 @@ namespace BlueYonder.Companion.Controllers
 {
     public class TravelersController : ApiController
     {
-        private ITravelerRepository Travelers { get; set; }
+        private readonly ITravelerRepository travelers;
 
         public TravelersController()
         {
-            Travelers = new TravelerRepository();
+            travelers = new TravelerRepository();
         }
 
         public HttpResponseMessage Get(string id)
         {
-            var traveler = Travelers.FindBy(t => t.TravelerUserIdentity == id).FirstOrDefault();
+            var traveler = travelers.FindBy(t => t.TravelerUserIdentity == id).FirstOrDefault();
 
             // Handling the HTTP status codes
             if (traveler != null)
@@ -32,13 +32,13 @@ namespace BlueYonder.Companion.Controllers
 
         public HttpResponseMessage Post(Traveler traveler)
         {
-            if(Travelers.FindBy(t => t.TravelerUserIdentity == traveler.TravelerUserIdentity).Any())
+            if(travelers.FindBy(t => t.TravelerUserIdentity == traveler.TravelerUserIdentity).Any())
             {
                 return Request.CreateResponse(HttpStatusCode.BadRequest);
             }
             // saving the new order to the database
-            Travelers.Add(traveler);
-            Travelers.Save();
+            travelers.Add(traveler);
+            travelers.Save();
 
             // creating the response, the newly saved entity and 201 Created status code
             var response = Request.CreateResponse(HttpStatusCode.Created, traveler);
@@ -50,24 +50,24 @@ namespace BlueYonder.Companion.Controllers
         public HttpResponseMessage Put(string id, Traveler traveler)
         {
             // returning 404 if the entity doesn't exist 
-            if (Travelers.FindBy(t => t.TravelerUserIdentity == id).FirstOrDefault() == null)
+            if (travelers.FindBy(t => t.TravelerUserIdentity == id).FirstOrDefault() == null)
                 return Request.CreateResponse(HttpStatusCode.NotFound);
 
-            Travelers.Edit(traveler);
-            Travelers.Save();
+            travelers.Edit(traveler);
+            travelers.Save();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
 
         public HttpResponseMessage Delete(string id)
         {
-            var traveler = Travelers.FindBy(t => t.TravelerUserIdentity == id).FirstOrDefault();
+            var traveler = travelers.FindBy(t => t.TravelerUserIdentity == id).FirstOrDefault();
 
             // returning 404 if the entity doesn't exist 
             if (traveler == null)
                 return Request.CreateResponse(HttpStatusCode.NotFound);
 
-            Travelers.Delete(traveler);
-            Travelers.Save();
+            travelers.Delete(traveler);
+            travelers.Save();
             return Request.CreateResponse(HttpStatusCode.OK);
         }
     }
